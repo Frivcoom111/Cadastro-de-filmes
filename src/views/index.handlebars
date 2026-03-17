@@ -1,0 +1,37 @@
+<h1 class="mb-4 text-center fw-bold">🎬 Catálogo de Filmes</h1>
+
+<div class="row g-4">
+  {{#each movies}}
+    <div class="col-md-4">
+      <div class="card h-100 shadow-lg border-0">
+
+        <!-- IMAGEM -->
+        <img 
+          src="{{this.imagem}}" 
+          class="card-img-top" 
+          alt="{{this.titulo}}"
+          style="height: 250px; object-fit: cover;"
+        >
+
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title fw-bold">{{this.titulo}}</h5>
+
+          <p class="card-text text-muted small mb-2">
+            {{this.genero}} • {{this.ano}}
+          </p>
+
+          <p class="mb-3">
+            ⭐ <strong>{{this.nota}}</strong>
+          </p>
+
+          <div class="mt-auto">
+            <a href="#" class="btn btn-dark w-100">
+              Ver detalhes
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  {{/each}}
+</div>
