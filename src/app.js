@@ -26,6 +26,10 @@ app.get("/", async (request, response) => {
   }
 });
 
+app.get("/cadastro", (req, res) => {
+    res.render("cadastro");
+});
+
 // Rotas
 app.use("/movies", moviesRoutes);
 
