@@ -3,6 +3,7 @@ import expressHandlebars from "express-handlebars";
 import path from "path";
 import { fileURLToPath } from "url";
 import { movies } from "./routes/moviesRoutes.js";
+import moviesRoutes from "./routes/moviesRoutes.js";
 
 const app = express();
 app.use(express.json());
@@ -25,5 +26,7 @@ app.get("/", async (request, response) => {
   }
 });
 
+// Rotas
+app.use("/movies", moviesRoutes);
+
 export default app;
-    
