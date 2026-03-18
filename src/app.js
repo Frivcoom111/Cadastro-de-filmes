@@ -12,7 +12,15 @@ app.use(express.json());
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-app.engine("handlebars", expressHandlebars.engine());
+app.use(express.static(path.join(__dirname, "..", "public")));
+
+app.engine(
+  "handlebars",
+  expressHandlebars.engine({
+    defaultLayout: "main",
+    layoutsDir: path.join(__dirname, "views", "layouts"),
+  }),
+);
 app.set("view engine", "handlebars");
 app.set("views", path.join(__dirname, "views"));
 
@@ -27,7 +35,7 @@ app.get("/", async (request, response) => {
 });
 
 app.get("/cadastro", (req, res) => {
-    res.render("cadastro");
+  res.render("cadastro");
 });
 
 // Rotas
