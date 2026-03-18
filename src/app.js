@@ -2,7 +2,6 @@ import express from "express";
 import expressHandlebars from "express-handlebars";
 import path from "path";
 import { fileURLToPath } from "url";
-import { movies } from "./routes/moviesRoutes.js";
 import moviesRoutes from "./routes/moviesRoutes.js";
 
 const app = express();
@@ -27,8 +26,9 @@ app.set("views", path.join(__dirname, "views"));
 app.use(express.static("public"));
 
 // Renderização index
-app.get("/", async (request, response) => {
+app.get("/", (request, response) => {
   try {
+
     response.render("index", { movies });
   } catch (error) {
     console.error(error);
@@ -41,6 +41,6 @@ app.get("/cadastro", (req, res) => {
 });
 
 // Rotas
-app.use("/movies", moviesRoutes);
+app.use("/filmes", moviesRoutes);
 
 export default app;
