@@ -16,6 +16,8 @@ app.engine("handlebars", expressHandlebars.engine());
 app.set("view engine", "handlebars");
 app.set("views", path.join(__dirname, "views"));
 
+app.use(express.static("public"));
+
 // Renderização index
 app.get("/", async (request, response) => {
   try {
