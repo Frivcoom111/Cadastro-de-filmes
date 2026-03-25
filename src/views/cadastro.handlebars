@@ -86,6 +86,31 @@
     box-shadow: 0 0 0 3px rgba(200, 169, 110, 0.1);
   }
 
+  .form-textarea {
+    width: 100%;
+    background-color: var(--color-bg-elevated);
+    border: var(--border-default);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    padding: var(--space-3) var(--space-4);
+    height: 100px;
+    resize: vertical;
+    transition: border-color var(--transition-base), box-shadow var(--transition-base);
+    box-sizing: border-box;
+  }
+
+  .form-textarea::placeholder {
+    color: var(--text-muted);
+  }
+
+  .form-textarea:focus {
+    outline: none;
+    border-color: rgba(200, 169, 110, 0.5);
+    box-shadow: 0 0 0 3px rgba(200, 169, 110, 0.1);
+  }
+
   .mb-field {
     margin-bottom: var(--space-5);
   }
@@ -141,22 +166,6 @@
     font-weight: var(--font-weight-medium);
   }
 
-  .stars-wrapper {
-    display: flex;
-    gap: var(--space-3);
-    align-items: center;
-  }
-
-  .stars-wrapper .form-control {
-    flex: 1;
-  }
-
-  .nota-hint {
-    font-size: var(--text-xs);
-    color: var(--text-muted);
-    white-space: nowrap;
-  }
-
   .form-divider {
     border: none;
     border-top: var(--border-subtle);
@@ -199,7 +208,7 @@
     <p>Preencha as informações do filme abaixo</p>
   </div>
 
-  <form action="/filmes" method="POST" enctype="multipart/form-data">
+  <form action="/filmes/criar" method="POST" enctype="multipart/form-data">
 
     <!-- Título -->
     <div class="mb-field">
@@ -244,21 +253,14 @@
       <input type="text" name="diretor" class="form-control" placeholder="Ex: Christopher Nolan">
     </div>
 
-    <!-- Nota -->
+    <!-- Descrição -->
     <div class="mb-field">
-      <label class="form-label">Nota</label>
-      <div class="stars-wrapper">
-        <input
-          type="number"
-          name="nota"
-          class="form-control"
-          placeholder="0.0"
-          min="0"
-          max="10"
-          step="0.1"
-        >
-        <span class="nota-hint">de 10</span>
-      </div>
+      <label class="form-label">Descrição</label>
+      <textarea
+        name="descricao"
+        class="form-textarea"
+        placeholder="Breve descrição do filme..."
+      ></textarea>
     </div>
 
     <!-- Destaque -->

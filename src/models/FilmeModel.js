@@ -20,6 +20,11 @@ class Filme {
     return filmes;
   }
 
+  findById(id) {
+    const filme = db.prepare("SELECT * FROM filmes WHERE id = ?").get(id);
+    return filme;
+  }
+
   deleteById(id) {
     const stmt = db.prepare("DELETE FROM filmes WHERE id = ?");
     const results = stmt.run(id);
