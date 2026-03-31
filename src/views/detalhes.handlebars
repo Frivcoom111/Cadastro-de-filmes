@@ -249,7 +249,7 @@
     const response = await fetch(`/filmes/delete/${id}`, { method: "DELETE" });
     const data = await response.json();
 
-    if (data.success) {
+    if (data.filmeDelete) {
       window.location.href = "/";
     } else {
       alert("Erro ao deletar filme.");

@@ -1,27 +1,37 @@
-<!DOCTYPE html>
 <html lang="pt-br">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Master Filmes</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Master Filmes</title>
 
-  <!-- Google Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Sora:wght@400;500;600&display=swap"
-    rel="stylesheet">
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23FF6B35'/><circle cx='50' cy='50' r='35' fill='%23000'/><rect x='30' y='35' width='8' height='30' fill='%23FF6B35'/><rect x='42' y='35' width='8' height='30' fill='%23FF6B35'/><rect x='54' y='35' width='8' height='30' fill='%23FF6B35'/><rect x='66' y='35' width='8' height='30' fill='%23FF6B35'/></svg>"
+    />
 
-  <!-- Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Sora:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- Estilos globais -->
-  <link rel="stylesheet" href="/styles/style.css">
-</head>
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
 
-<body style="background-color: var(--color-bg-primary); color: var(--text-primary); font-family: var(--font-body); min-height: 100vh;">
+    <!-- Estilos globais -->
+    <link rel="stylesheet" href="/styles/style.css" />
+  </head>
 
-  <!-- Navbar -->
-  <nav style="
+  <body
+    style="background-color: var(--color-bg-primary); color: var(--text-primary); font-family: var(--font-body); min-height: 100vh;"
+  >
+
+    <!-- Navbar -->
+    <nav
+      style="
     background-color: var(--color-bg-secondary);
     border-bottom: var(--border-subtle);
     height: var(--header-height);
@@ -31,20 +41,26 @@
     position: sticky;
     top: 0;
     z-index: var(--z-sticky);
-  ">
-    <div class="container d-flex align-items-center justify-content-between">
-      <a href="/" style="
+  "
+    >
+      <div class="container d-flex align-items-center justify-content-between">
+        <a
+          href="/"
+          style="
         font-family: var(--font-display);
         font-size: var(--text-xl);
         font-weight: var(--font-weight-bold);
         color: var(--text-primary);
         text-decoration: none;
         letter-spacing: var(--letter-spacing-tight);
-      ">
-        🎬 Master Filmes
-      </a>
+      "
+        >
+          🎬 Master Filmes
+        </a>
 
-      <a href="/cadastro" style="
+        <a
+          href="/cadastro"
+          style="
         font-family: var(--font-ui);
         font-size: var(--text-sm);
         font-weight: var(--font-weight-semibold);
@@ -56,18 +72,19 @@
         border-radius: var(--radius-full);
         padding: var(--space-2) var(--space-5);
         transition: background var(--transition-base), color var(--transition-base);
-      ">
-        + Cadastrar
-      </a>
-    </div>
-  </nav>
+      "
+        >
+          + Cadastrar
+        </a>
+      </div>
+    </nav>
 
-  <!-- Conteúdo -->
-  <main class="container" style="padding: var(--space-12) var(--space-4);">
-    {{{body}}}
-  </main>
+    <!-- Conteúdo -->
+    <main class="container" style="padding: var(--space-12) var(--space-4);">
+      {{{body}}}
+    </main>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
 
 </html>

@@ -4,11 +4,10 @@ import path from "path";
 import { fileURLToPath } from "url";
 import moviesRoutes from "./routes/moviesRoutes.js";
 import Filme from "./models/FilmeModel.js";
+import { AsyncLocalStorage } from "async_hooks";
 
 const app = express();
 app.use(express.json());
-
-const filme = new Filme();
 
 // Configuração handlebars
 const __filename = fileURLToPath(import.meta.url);
@@ -31,9 +30,11 @@ app.set("views", path.join(__dirname, "views"));
 app.use(express.static("public"));
 
 // Renderização index
-app.get("/", (request, response) => {
+app.get("/", async (request, response) => {
   try {
-    const movies = filme.findAll();
+    const movies = await Filme.findAll({
+      raw: true
+    });
     const destaques = movies.filter((m) => m.destaque === 1);
     response.render("index", { movies, destaques });
   } catch (error) {
@@ -48,10 +49,13 @@ app.get("/cadastro", (request, response) => {
 });
 
 // Renderização detalhes
-app.get("/detalhes/:id", (request, response) => {
+app.get("/detalhes/:id", async (request, response) => {
   try {
     const { id } = request.params;
-    const detalhesFilme = filme.findById(id);
+    const detalhesFilme = await Filme.findOne({
+      raw: true,
+      where: { id }
+    });
 
     if (!detalhesFilme) return response.status(400).send("Filme não encontrado.");
 

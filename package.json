@@ -12,11 +12,12 @@
   "license": "ISC",
   "type": "module",
   "dependencies": {
-    "better-sqlite3": "^12.8.0",
     "dotenv": "^17.3.1",
     "express": "^5.2.1",
     "express-handlebars": "^8.0.6",
-    "multer": "^2.1.1"
+    "multer": "^2.1.1",
+    "sequelize": "^6.37.8",
+    "sqlite3": "^6.0.1"
   },
   "devDependencies": {
     "nodemon": "^3.1.14"
