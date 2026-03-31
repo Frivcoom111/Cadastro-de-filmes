@@ -1,0 +1,258 @@
+<style>
+  .detalhe-container {
+    max-width: 900px;
+    margin: 0 auto;
+    animation: fadeUp 0.5s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .detalhe-hero {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: var(--space-12);
+    align-items: flex-start;
+  }
+
+  .detalhe-poster {
+    width: 100%;
+    aspect-ratio: 2/3;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-xl);
+  }
+
+  .detalhe-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+  }
+
+  .detalhe-badge {
+    display: inline-block;
+    font-family: var(--font-ui);
+    font-size: var(--text-xs);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: var(--letter-spacing-wider);
+    text-transform: uppercase;
+    color: var(--color-highlight);
+    border: var(--border-gold);
+    border-radius: var(--radius-full);
+    padding: var(--space-1) var(--space-4);
+    width: fit-content;
+  }
+
+  .detalhe-titulo {
+    font-family: var(--font-display);
+    font-size: var(--text-4xl);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: var(--letter-spacing-tight);
+    color: var(--text-primary);
+    line-height: var(--line-height-tight);
+    margin: 0;
+  }
+
+  .detalhe-meta {
+    display: flex;
+    gap: var(--space-6);
+    flex-wrap: wrap;
+  }
+
+  .detalhe-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .detalhe-meta-label {
+    font-family: var(--font-ui);
+    font-size: var(--text-xs);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: var(--letter-spacing-wider);
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .detalhe-meta-value {
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    color: var(--text-primary);
+    font-weight: var(--font-weight-medium);
+  }
+
+  .detalhe-divider {
+    border: none;
+    border-top: var(--border-subtle);
+    margin: 0;
+  }
+
+  .detalhe-descricao-label {
+    font-family: var(--font-ui);
+    font-size: var(--text-xs);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: var(--letter-spacing-wider);
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: var(--space-3);
+  }
+
+  .detalhe-descricao {
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    color: var(--text-secondary);
+    line-height: var(--line-height-relaxed);
+    margin: 0;
+  }
+
+  .detalhe-actions {
+    display: flex;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+  }
+
+  .btn-voltar {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    background-color: var(--color-bg-elevated);
+    border: var(--border-default);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-family: var(--font-ui);
+    font-size: var(--text-sm);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: var(--letter-spacing-wide);
+    text-transform: uppercase;
+    padding: var(--space-3) var(--space-6);
+    text-decoration: none;
+    transition: background var(--transition-base), border-color var(--transition-base);
+    cursor: pointer;
+  }
+
+  .btn-voltar:hover {
+    background-color: var(--color-bg-secondary);
+    border-color: rgba(255, 255, 255, 0.25);
+    color: var(--text-primary);
+  }
+
+  .btn-deletar {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    background-color: transparent;
+    border: 1px solid rgba(229, 62, 62, 0.4);
+    border-radius: var(--radius-md);
+    color: var(--color-danger);
+    font-family: var(--font-ui);
+    font-size: var(--text-sm);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: var(--letter-spacing-wide);
+    text-transform: uppercase;
+    padding: var(--space-3) var(--space-6);
+    text-decoration: none;
+    transition: background var(--transition-base), border-color var(--transition-base);
+    cursor: pointer;
+  }
+
+  .btn-deletar:hover {
+    background-color: rgba(229, 62, 62, 0.1);
+    border-color: var(--color-danger);
+  }
+
+  @media (max-width: 640px) {
+    .detalhe-hero {
+      grid-template-columns: 1fr;
+    }
+
+    .detalhe-poster {
+      max-width: 260px;
+      margin: 0 auto;
+      display: block;
+    }
+
+    .detalhe-titulo {
+      font-size: var(--text-2xl);
+    }
+  }
+</style>
+
+<div class="detalhe-container">
+
+  <!-- Voltar -->
+  <a href="/" class="btn-voltar" style="margin-bottom: var(--space-10); display: inline-flex;">
+    ← Voltar
+  </a>
+
+  <div class="detalhe-hero">
+
+    <!-- Poster -->
+    <img
+      src="{{filme.imagem}}"
+      alt="{{filme.titulo}}"
+      class="detalhe-poster"
+    >
+
+    <!-- Informações -->
+    <div class="detalhe-info">
+
+      {{#if filme.destaque}}
+      <div class="detalhe-badge">⭐ Destaque</div>
+      {{/if}}
+
+      <h1 class="detalhe-titulo">{{filme.titulo}}</h1>
+
+      <!-- Metadados -->
+      <div class="detalhe-meta">
+        <div class="detalhe-meta-item">
+          <span class="detalhe-meta-label">Diretor</span>
+          <span class="detalhe-meta-value">{{filme.diretor}}</span>
+        </div>
+        <div class="detalhe-meta-item">
+          <span class="detalhe-meta-label">Ano</span>
+          <span class="detalhe-meta-value">{{filme.ano}}</span>
+        </div>
+        <div class="detalhe-meta-item">
+          <span class="detalhe-meta-label">Gênero</span>
+          <span class="detalhe-meta-value">{{filme.genero}}</span>
+        </div>
+      </div>
+
+      <hr class="detalhe-divider">
+
+      <!-- Descrição -->
+      <div>
+        <p class="detalhe-descricao-label">Sinopse</p>
+        <p class="detalhe-descricao">{{filme.descricao}}</p>
+      </div>
+
+      <hr class="detalhe-divider">
+
+      <!-- Ações -->
+      <div class="detalhe-actions">
+        <button
+          class="btn-deletar"
+          onclick="deletarFilme({{filme.id}})"
+        >🗑 Deletar Filme</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  async function deletarFilme(id) {
+    if (!confirm("Tem certeza que deseja deletar este filme?")) return;
+
+    const response = await fetch(`/filmes/delete/${id}`, { method: "DELETE" });
+    const data = await response.json();
+
+    if (data.success) {
+      window.location.href = "/";
+    } else {
+      alert("Erro ao deletar filme.");
+    }
+  }
+</script>
